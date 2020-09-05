@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:phoneauth/screens/userProfileScreen.dart';
 import 'package:phoneauth/utility/appColors.dart';
 import 'package:phoneauth/utility/appDimens.dart';
 import 'package:phoneauth/utility/utility.dart';
-import 'package:phoneauth/screens/userProfileScreen.dart';
 
 class VerificationScreen extends StatefulWidget {
   String countrycode;

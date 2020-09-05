@@ -8,9 +8,9 @@ Use latest versions of below mentioned plugins in `pubspec.yaml`.
 
 | Plugin | Pub | Explanation |
 |--------|-----|-------------|
-| [http](https://github.com/dart-lang/http) | [![pub package](https://img.shields.io/pub/v/http.svg)](https://pub.dev/packages/http) | Used to make HTTP request.
 | [connectivity](https://github.com/flutter/plugins/tree/master/packages/connectivity/connectivity) | [![pub package](https://img.shields.io/pub/v/connectivity.svg)](https://pub.dev/packages/connectivity) | Used to check internet connectivity. 
 | [firebase_auth](https://github.com/FirebaseExtended/flutterfire/tree/master/packages/firebase_auth/firebase_auth) | [![pub package](https://img.shields.io/pub/v/firebase_auth.svg)](https://pub.dev/packages/firebase_auth) | Used to authenticate phone.
+| [firebase_core](https://github.com/FirebaseExtended/flutterfire/tree/master/packages/firebase_core/firebase_core) | [![pub package](https://img.shields.io/pub/v/firebase_core.svg)](https://pub.dev/packages/firebase_core) | Used for core Firebase Api.
 
 And then
 
@@ -65,9 +65,6 @@ Add below line in app/build.gradle
 
     dependencies {
         // ...
-        implementation 'com.google.firebase:firebase-core:9.6.1'
-        // Getting a "Could not find" error? Make sure you have
-        // the latest Google Repository in the Android SDK manager
     }
 
     // ADD THIS AT THE BOTTOM

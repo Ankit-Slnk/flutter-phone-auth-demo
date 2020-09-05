@@ -1,13 +1,8 @@
-import 'dart:convert';
-
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:phoneauth/screens/verificationScreen.dart';
 import 'package:phoneauth/utility/appColors.dart';
 import 'package:phoneauth/utility/appDimens.dart';
 import 'package:phoneauth/utility/utility.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginWithPhone extends StatefulWidget {
   LoginWithPhone();
@@ -20,7 +15,6 @@ class _LoginWithPhoneState extends State<LoginWithPhone> {
   TextEditingController textEditingController;
   Size size;
   MediaQueryData mediaQuerydata;
-  SharedPreferences preferences;
   bool isLoading = false;
 
   @override
