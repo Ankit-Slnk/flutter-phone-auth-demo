@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "255130364538",
+    "firebase_url": "https://flutter-phone-auth-demo-14a22.firebaseio.com",
+    "project_id": "flutter-phone-auth-demo-14a22",
+    "storage_bucket": "flutter-phone-auth-demo-14a22.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:255130364538:android:2398a69cf50115813829c3",
+        "android_client_info": {
+          "package_name": "com.ankit.phoneauth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "255130364538-hnfrnf2pijbemvgfai4djck3iaq1vevk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSjhX9Yq330FIEWmpLRQi5kc4trg8jJcA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "255130364538-hnfrnf2pijbemvgfai4djck3iaq1vevk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
