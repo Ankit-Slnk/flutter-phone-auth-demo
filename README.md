@@ -11,6 +11,7 @@ Use latest versions of below mentioned plugins in `pubspec.yaml`.
 | [connectivity](https://github.com/flutter/plugins/tree/master/packages/connectivity/connectivity) | [![pub package](https://img.shields.io/pub/v/connectivity.svg)](https://pub.dev/packages/connectivity) | Used to check internet connectivity. 
 | [firebase_auth](https://github.com/FirebaseExtended/flutterfire/tree/master/packages/firebase_auth/firebase_auth) | [![pub package](https://img.shields.io/pub/v/firebase_auth.svg)](https://pub.dev/packages/firebase_auth) | Used to authenticate phone.
 | [firebase_core](https://github.com/FirebaseExtended/flutterfire/tree/master/packages/firebase_core/firebase_core) | [![pub package](https://img.shields.io/pub/v/firebase_core.svg)](https://pub.dev/packages/firebase_core) | Used for core Firebase Api.
+| [fluttertoast](https://github.com/PonnamKarthik/FlutterToast) | [![pub package](https://img.shields.io/pub/v/fluttertoast.svg)](https://pub.dev/packages/fluttertoast) | Used to show toast.
 
 And then
 
