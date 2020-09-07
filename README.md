@@ -72,3 +72,37 @@ Add below line in app/build.gradle
 
 #### For iOS
 
+### Initialise Fireabse
+
+    await Firebase.initializeApp();
+
+### Verify Phone
+
+    final PhoneVerificationFailed verificationFailed = (FirebaseAuthException authException) {
+        // Handle the case when phone verification failes.
+    };
+
+    final PhoneCodeSent codeSent = (String verificationId, [int forceResendingToken]) async {
+        // OTP send successfully.
+        _verificationId = verificationId;
+    };
+
+    final PhoneCodeAutoRetrievalTimeout codeAutoRetrievalTimeout = (String verificationId) {
+        // Handle the case when phone verification automatic retrival timeout.
+        _verificationId = verificationId;
+    };
+
+    PhoneVerificationCompleted verificationCompleted = (PhoneAuthCredential phoneAuthCredential) {
+        // Handle the case when we want automatic phone verification.
+        // Only called on Android.
+    };
+
+    await _auth
+        .verifyPhoneNumber(
+            phoneNumber: +911111111111,                             // Phone number with country code.
+            timeout: const Duration(seconds: 5),                    // Phone code automatic retrival timeout duration.
+            verificationCompleted: verificationCompleted,           // Triggers for instant verification of phone.
+            verificationFailed: verificationFailed,                 // Triggers when phone verification failed.
+            codeSent: codeSent,                                     // Triggers when code is sent successfully.
+            codeAutoRetrievalTimeout: codeAutoRetrievalTimeout,     // Triggers when phone code auto retrival timeout.
+        ); 

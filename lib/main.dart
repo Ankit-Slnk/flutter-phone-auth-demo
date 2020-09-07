@@ -5,6 +5,7 @@ import 'package:phoneauth/screens/loginWithPhone.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  //most important thing is to initialise firebase in project
   await Firebase.initializeApp();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then(
     (_) {
