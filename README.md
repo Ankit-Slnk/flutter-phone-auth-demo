@@ -106,3 +106,9 @@ Add below line in app/build.gradle
             codeSent: codeSent,                                     // Triggers when code is sent successfully.
             codeAutoRetrievalTimeout: codeAutoRetrievalTimeout,     // Triggers when phone code auto retrival timeout.
         ); 
+
+Finally
+
+    flutter run
+
+##### Please refer to my [blogs](https://ankitsolanki.netlify.app/blog.html) for more information.
