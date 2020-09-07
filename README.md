@@ -72,7 +72,7 @@ Add below line in app/build.gradle
 
 #### For iOS
 
-### Initialise Fireabse
+### Initialise Firebase
 
     await Firebase.initializeApp();
 
