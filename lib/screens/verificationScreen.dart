@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:phoneauth/screens/userProfileScreen.dart';
@@ -58,6 +59,8 @@ class _VerificationScreenPageState extends State<VerificationScreen> {
 
     final PhoneCodeSent codeSent =
         (String verificationId, [int forceResendingToken]) async {
+      print("codeSent");
+      print(verificationId);
       Utility.showToast(
           msg: "Please check your phone for the verification code.");
       _verificationId = verificationId;
@@ -70,21 +73,36 @@ class _VerificationScreenPageState extends State<VerificationScreen> {
     };
 
     PhoneVerificationCompleted verificationCompleted =
-        (PhoneAuthCredential phoneAuthCredential) async {};
+        (PhoneAuthCredential phoneAuthCredential) async {
+      print("verificationCompleted");
+    };
 
-    await _auth
-        .verifyPhoneNumber(
-            phoneNumber: widget.countrycode + widget.mobile,
-            timeout: const Duration(seconds: 5),
-            verificationCompleted: verificationCompleted,
-            verificationFailed: verificationFailed,
-            codeSent: codeSent,
-            codeAutoRetrievalTimeout: codeAutoRetrievalTimeout)
-        .then((value) {
-      print("then");
-    }).catchError((onError) {
-      print(onError);
-    });
+    if (kIsWeb) {
+      await _auth
+          .signInWithPhoneNumber(
+        widget.countrycode + widget.mobile,
+      )
+          .then((value) {
+        _verificationId = value.verificationId;
+        print("then");
+      }).catchError((onError) {
+        print(onError);
+      });
+    } else {
+      await _auth
+          .verifyPhoneNumber(
+              phoneNumber: widget.countrycode + widget.mobile,
+              timeout: const Duration(seconds: 5),
+              verificationCompleted: verificationCompleted,
+              verificationFailed: verificationFailed,
+              codeSent: codeSent,
+              codeAutoRetrievalTimeout: codeAutoRetrievalTimeout)
+          .then((value) {
+        print("then");
+      }).catchError((onError) {
+        print(onError);
+      });
+    }
 
     if (mounted)
       setState(() {
