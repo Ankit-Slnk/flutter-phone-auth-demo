@@ -35,7 +35,7 @@ Please add some phone numbers for testing
 | +91 22 2222 2222 | 222222 |
 | +91 33 3333 3333 | 333333 |
 
-You can also get this steps in Firebase docs for [Android](https://firebase.google.com/docs/auth/android/phone-auth) and [iOS](https://firebase.google.com/docs/auth/ios/phone-auth).
+You can also get this steps in Firebase docs for [Android](https://firebase.google.com/docs/auth/android/phone-auth) and [iOS](https://firebase.google.com/docs/auth/ios/phone-auth) and [web](https://firebase.google.com/docs/auth/web/phone-auth).
 
 #### For Android
 
@@ -104,18 +104,64 @@ Follow the steps in [google_sign_in](https://pub.dev/packages/google_sign_in) li
         // Only called on Android.
     };
 
-    await _auth
-        .verifyPhoneNumber(
-            phoneNumber: +911111111111,                             // Phone number with country code.
-            timeout: const Duration(seconds: 5),                    // Phone code automatic retrival timeout duration.
-            verificationCompleted: verificationCompleted,           // Triggers for instant verification of phone.
-            verificationFailed: verificationFailed,                 // Triggers when phone verification failed.
-            codeSent: codeSent,                                     // Triggers when code is sent successfully.
-            codeAutoRetrievalTimeout: codeAutoRetrievalTimeout,     // Triggers when phone code auto retrival timeout.
-        ); 
+    if (kIsWeb) { //for web
+        await _auth.signInWithPhoneNumber("+911111111111")
+        .then((value) {
+            _verificationId = value.verificationId;
+        });
+    } else { // for native
+        await _auth
+            .verifyPhoneNumber(
+                phoneNumber: "+911111111111",                             // Phone number with country code.
+                timeout: const Duration(seconds: 5),                    // Phone code automatic retrival timeout duration.
+                verificationCompleted: verificationCompleted,           // Triggers for instant verification of phone.
+                verificationFailed: verificationFailed,                 // Triggers when phone verification failed.
+                codeSent: codeSent,                                     // Triggers when code is sent successfully.
+                codeAutoRetrievalTimeout: codeAutoRetrievalTimeout,     // Triggers when phone code auto retrival timeout.
+            ); 
+    }
 
-Finally
+### Sign in
+
+    AuthCredential credential = PhoneAuthProvider.credential(
+        verificationId: _verificationId,
+        smsCode: otp,
+    );
+    User user = (await _auth.signInWithCredential(credential)).user;
+    User currentUser = _auth.currentUser;
+
+#### For Web
+
+Add Firebase core JS SDK
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+
+Add Firebase Auth and Analytics JS for google sign-in
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-analytics.js"></script>
+
+Initialize Firebase with configuration
+
+    <script>
+    var firebaseConfig = {
+      // ... your web apps configuration. This is available in your Firebase project settings.
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+    </script>
+
+Finally for android and ios
 
     flutter run
 
+for web
+
+    flutter run -d chrome
+
 <!-- ##### Please refer to my [blogs](https://ankitsolanki.netlify.app/blog.html) for more information. -->
+
+Checkout [this demo](https://flutter-web-phone-auth.netlify.app/#/) in [Flutter Web](https://flutter.dev/docs/get-started/web).
