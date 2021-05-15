@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 enum DeviceType {
@@ -108,29 +109,31 @@ class AppDimens {
   _getDevicetypes(Size size) {
     double screenwidth = size.width;
     double screenheight = size.height;
-    if (Platform.isAndroid) {
-      if ((screenwidth >= 600 && screenwidth <= 700)) {
-        deviceType = DeviceType.ANDROID7INCHTABLET;
-      } else if ((screenwidth > 700)) {
-        deviceType = DeviceType.ANDROID10INCHTABLET;
-      } else {
-        deviceType = DeviceType.ANDROIDPHONE;
-      }
-    } else if (Platform.isIOS) {
-      if ((screenwidth >= 750 && screenwidth <= 800)) {
-        deviceType = DeviceType.IOSIPADPRO9INCHTABLET;
-      } else if ((screenwidth > 800 && screenwidth < 900)) {
-        if (screenwidth == 810) {
-          deviceType = DeviceType.IOSIPAD7;
-        } else if (screenwidth == 834 && screenheight == 1194) {
-          deviceType = DeviceType.IOSIPADPRO11INCHTABLET;
-        } else if (screenwidth == 834 && screenheight == 1112) {
-          deviceType = DeviceType.IOSIPAD3GEN;
+    if (!kIsWeb) {
+      if (Platform.isAndroid) {
+        if ((screenwidth >= 600 && screenwidth <= 700)) {
+          deviceType = DeviceType.ANDROID7INCHTABLET;
+        } else if ((screenwidth > 700)) {
+          deviceType = DeviceType.ANDROID10INCHTABLET;
+        } else {
+          deviceType = DeviceType.ANDROIDPHONE;
         }
-      } else if ((screenwidth > 1000)) {
-        deviceType = DeviceType.IOSIPADPRO12INCHTABLET;
-      } else {
-        deviceType = DeviceType.IOSDEVICE;
+      } else if (Platform.isIOS) {
+        if ((screenwidth >= 750 && screenwidth <= 800)) {
+          deviceType = DeviceType.IOSIPADPRO9INCHTABLET;
+        } else if ((screenwidth > 800 && screenwidth < 900)) {
+          if (screenwidth == 810) {
+            deviceType = DeviceType.IOSIPAD7;
+          } else if (screenwidth == 834 && screenheight == 1194) {
+            deviceType = DeviceType.IOSIPADPRO11INCHTABLET;
+          } else if (screenwidth == 834 && screenheight == 1112) {
+            deviceType = DeviceType.IOSIPAD3GEN;
+          }
+        } else if ((screenwidth > 1000)) {
+          deviceType = DeviceType.IOSIPADPRO12INCHTABLET;
+        } else {
+          deviceType = DeviceType.IOSDEVICE;
+        }
       }
     }
   }
